@@ -62,6 +62,8 @@ public class ControllerSaving {
            }).orElse(ResponseEntity.notFound().build());
     }
     
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    
     @PutMapping(value="/{id}")
 public ResponseEntity update(@PathVariable("id") long id,
                                       @RequestBody Saving savings) {
