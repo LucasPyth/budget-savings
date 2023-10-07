@@ -73,6 +73,16 @@ public ResponseEntity update(@PathVariable("id") long id,
                Saving updated = repository.save(record);
                return ResponseEntity.ok().body(updated);
            }).orElse(ResponseEntity.notFound().build());
-}
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     
+    @GetMapping(path = {"/{id}"})
+public ResponseEntity findById(@PathVariable long id){
+   return repository.findById(id)
+           .map(record -> ResponseEntity.ok().body(record))
+           .orElse(ResponseEntity.notFound().build());
+
+    }
+
 }
